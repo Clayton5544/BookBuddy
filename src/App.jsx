@@ -1,75 +1,37 @@
-import "./Form"
-
-
-
-
-const FormOne = () => {
-  return (
-    <div className='formone'>
-      <form>
-        <Form placeholder='ID' />
-        <Form placeholder='First Name' />
-        <Form placeholder='Last Name' />
-        <Form placeholder='Email' />
-        <Form placeholder='Books' />
-
-
-
-
-
-      </form>
-
-
-
-
-
-
-    </div>
-  )
-
-
-
-
-}
-
-
-
-
-
-
-
+import Form from'./Form'
+import React, {useEffect, useState} from 'react'
 
 const App = () => {
-
-
-  
 
   useEffect(() => {
     const getToken = async() => {
       const responce = await fetch('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+        Method: 'POST',
+        Headers: {
+          Accept: 'application.json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
+        Body: JSON.stringify({
+          firstname: 'Clayton',
+          lastname: 'Callison',
+          email: 'claytoncallison12@yahoo.com',
+          password: 'clayton123'
 
         })
       
-        
-      });
-      const responceJson = await responce.json();
-        console.log(responceJson);
+      })
     }
-
- 
-    })
-    getToken()
+  })
+  
 
   return (
+
     <>
-      <h1>Book Buddy</h1>
+      <Form />
+      
     </>
   )
 }
+App();
 
 export default App
